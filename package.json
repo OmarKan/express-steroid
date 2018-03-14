@@ -9,8 +9,12 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha ./test/*"
   },
-  "homepage": ""
-  "bugs": "//GITHUB HERE",
+  "homepage": "https://github.com/OmarKan/express-steroid",
+  "bugs": "https://github.com/OmarKan/express-steroid/issues",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/OmarKan/express-steroid.git"
+  },
   "dependencies": {
     "express": "~4.15.5",
     "lodash": "^4.17.5",
