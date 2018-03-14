@@ -209,7 +209,7 @@ describe("Middleware Handler", function(){
                 done();
             }
         });//End of it.
-        it("Should inject result handlers correctly: responder", function(done){
+        it("Should inject result handlers correctly: respond", function(done){
             let es = new ExpressSteroid();
 
 
@@ -255,14 +255,14 @@ describe("Middleware Handler", function(){
             };
 
             //Mock func.
-            let func = function(responder){
-                responder(null, response, 200);
+            let func = function(respond){
+                respond(null, response, 200);
             };
 
             //Call the function.
             es.inject(func)(req, res, next);
         });//End of it.
-        it("Should inject result handlers correctly: responder, with an error", function(done){
+        it("Should inject result handlers correctly: respond, with an error", function(done){
             let es = new ExpressSteroid();
 
 
@@ -294,14 +294,14 @@ describe("Middleware Handler", function(){
 
 
             //Mock func.
-            let func = function(responder){
-                responder(error);
+            let func = function(respond){
+                respond(error);
             };
 
             //Call the function.
             es.inject(func)(req, null, next);
         });//End of it.
-        it("Should inject result handlers correctly: next", function(done){
+        it("Should inject result handlers correctly: passToNext", function(done){
             let es = new ExpressSteroid();
 
 
@@ -332,14 +332,14 @@ describe("Middleware Handler", function(){
 
 
             //Mock func.
-            let func = function(next){
-                next(null, {key2: "value2"});
+            let func = function(passToNext){
+                passToNext(null, {key2: "value2"});
             };
 
             //Call the function.
             es.inject(func)(req, null, next);
         });//End of it.
-        it("Should inject result handlers correctly: next, with an error", function(done){
+        it("Should inject result handlers correctly: passToNext, with an error", function(done){
             let es = new ExpressSteroid();
 
 
@@ -375,8 +375,8 @@ describe("Middleware Handler", function(){
 
 
             //Mock func.
-            let func = function(next){
-                next(error);
+            let func = function(passToNext){
+                passToNext(error);
             };
 
             //Call the function.

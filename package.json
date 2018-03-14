@@ -11,19 +11,20 @@
   },
   "homepage": "https://github.com/OmarKan/express-steroid",
   "bugs": "https://github.com/OmarKan/express-steroid/issues",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/OmarKan/express-steroid.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OmarKan/express-steroid.git"
   },
   "dependencies": {
+    "diff": "^3.5.0",
     "express": "~4.15.5",
     "lodash": "^4.17.5",
-    "mongoose": "^5.0.9"
+    "mongoose": "^5.0.10"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.0.4",
-    "sinon": "^4.4.2",
+    "sinon": "^4.4.5",
     "sinon-chai": "^3.0.0"
   }
 }
