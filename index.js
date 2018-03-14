@@ -49,6 +49,9 @@ let defaultPrefs = {
         middlewareHandler      : {
             paramNotFunction: function(param){
                 return "Argument passed: " + param  + " is not a function";
+            },
+            notFound: function(){
+                return "Resource not found";
             }
         },
         extractor   : {
