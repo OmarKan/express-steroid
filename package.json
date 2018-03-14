@@ -1,7 +1,7 @@
 {
   "name": "express-steroid",
   "description": "An extension to ExpressJs that makes API input handling, parsing, validation, and building queries much easier and more powerful.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "main": "index.js",
   "author": "Omar Kanawati <mr.kanawati@gmail.com> (http://linkedin.com/in/omarkanawati)",

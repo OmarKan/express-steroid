@@ -125,6 +125,7 @@ module.exports = class ExpressSteroid{
 
         //Injector.
         this.inject = middlewareHandler.inject;
+        this.runInBackground = middlewareHandler.runInBackground;
 
         //Extractor.
         this.extract = extractor.extract;
