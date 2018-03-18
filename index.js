@@ -35,7 +35,8 @@ let defaultPrefs = {
         ignoredFields: ["_id", "__v"]
     },
     manipulator         : {
-        sources     : [dataObjName]
+        sources     : [dataObjName],
+        separator   : " "
     },
     validator           : {
         sources     : [dataObjName],
