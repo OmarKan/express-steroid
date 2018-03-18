@@ -112,7 +112,7 @@ describe("Middleware Handler", function(){
             let res = {
                 status: function(){
                     return {
-                        json: function(){
+                        send: function(){
 
                         }
                     }
@@ -285,8 +285,8 @@ describe("Middleware Handler", function(){
             };
 
 
-            //Mock res.status.json.
-            let jsonFunc = function(json){
+            //Mock res.status.send.
+            let sendFunc = function(json){
                 expect(json).to.equal(response);
 
                 done();
@@ -296,7 +296,7 @@ describe("Middleware Handler", function(){
             let statusFunc = function(status){
                 expect(status).to.equal(200);
 
-                return {json: jsonFunc};
+                return {send: sendFunc};
             };
 
             //Mock res
