@@ -18,7 +18,7 @@ let ExpressSteroid  = require('../index');
 
 describe("Middleware Handler", function(){
     describe("#inject", function(){
-        it("Should middlewareHandler a given function with parameters values", function(done){
+        it("Should inject a given function with parameters values", function(done){
             let es = new ExpressSteroid();
 
             //Mock req.
@@ -53,9 +53,9 @@ describe("Middleware Handler", function(){
 
 
             //Call the function.
-            es.inject(func, ["body", "query", "params"])(req, res, next);
+            es.inject(func, false, ["body", "query", "params"])(req, res, next);
         });//End of it.
-        it("Should middlewareHandler a given function with parameters values from correct sources", function(done){
+        it("Should inject a given function with parameters values from correct sources", function(done){
             let es = new ExpressSteroid();
 
             //Mock req.
@@ -91,7 +91,57 @@ describe("Middleware Handler", function(){
             //Call the function.
             es.inject(func)(req, res, next);
         });//End of it.
-        it("Should middlewareHandler a given function with parameters values from correct sources, and middlewareHandler defaults if not found", function(done){
+        it("Should inject a given function with parameters values from correct sources and pass to next function", function(done){
+            let es = new ExpressSteroid();
+
+            //Mock req.
+            let req = {
+                data: {
+                    "key1": "value1",
+                    "key2": [1, 2, 3]
+                },
+                query: {
+                    "key3": 50
+                },
+                params: {
+                    "key4": "value4"
+                }
+            };
+
+            //Mock res
+            let res = {
+                status: function(){
+                    return {
+                        json: function(){
+
+                        }
+                    }
+                }
+            };
+
+            //Mock next.
+            let next = function(){
+                nextFunc();
+            };
+
+            //Mock func.
+            let func = function(key1, key2, key3, key4, respond){
+                expect(key1).to.equal(req.data.key1);
+                expect(key2).to.deep.equal(req.data.key2);
+                expect(key3).to.be.undefined;
+                expect(key4).to.be.undefined;
+
+                respond(null, "RESPONSE");
+            };
+
+            let nextFunc = function(){
+                done();
+            };
+
+            //Call the function.
+            es.inject(func, true)(req, res, next);
+        });//End of it.
+        it("Should inject a given function with parameters values from correct sources, and middlewareHandler defaults if not found", function(done){
             let es = new ExpressSteroid();
 
             //Mock req.
@@ -129,9 +179,9 @@ describe("Middleware Handler", function(){
             };
 
             //Call the function.
-            es.inject(func, null, {key1: "Default1", key3: key3Default, key4: key4Default})(req, res, next);
+            es.inject(func, false, null, {key1: "Default1", key3: key3Default, key4: key4Default})(req, res, next);
         });//End of it.
-        it("Should middlewareHandler a given function with parameters values and default injections", function(done){
+        it("Should inject a given function with parameters values and default injections", function(done){
             let es = new ExpressSteroid();
             let userValue = "USER";
 
