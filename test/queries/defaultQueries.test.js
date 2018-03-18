@@ -126,6 +126,27 @@ describe("Default Queries", function(){
             done();
         });//End of it.
     });//End of #partialStringMatch.
+    describe("#inArray", function(){
+        it("Should return an 'in' query", function(done){
+            let es = new ExpressSteroid();
+
+            let param = ["Employee", "Manager"];
+            let dbFieldName = "role";
+
+            //Expected query.
+            let expectedQuery = {};
+            expectedQuery[dbFieldName] = {$in: param};
+
+            //Call query.
+            let result = es.queries.inArray.call(es, param, dbFieldName);
+
+            //Check the result.
+            expect(result).to.deep.equal(expectedQuery);
+
+            //Done.
+            done();
+        });//End of it.
+    });//End of #inArray.
     describe("#sortBy", function(){
         it("Should return sort object given string", function(done){
             let es = new ExpressSteroid();
