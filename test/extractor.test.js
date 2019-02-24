@@ -481,7 +481,7 @@ describe("Extractor", function(){
             };
 
             //Call the function.
-            es.extractFromSchema(getModelName(), true, true)(req, null, spy);
+            es.extractFromSchema(getModel(), true, true)(req, null, spy);
 
             //Next should be called with nothing.
             expect(spy).to.have.been.calledWith();
@@ -521,7 +521,7 @@ describe("Extractor", function(){
             };
 
             //Call the function.
-            es.extractFromSchema(getModelName(), true, true, ["location.lat", "email"])(req, null, spy);
+            es.extractFromSchema(getModel(), true, true, ["location.lat", "email"])(req, null, spy);
 
             //Next should be called with nothing.
             expect(spy).to.have.been.calledWith();
@@ -561,7 +561,7 @@ describe("Extractor", function(){
             };
 
             //Call the function.
-            es.extractFromSchema(getModelName(), true, true)(req, null, spy);
+            es.extractFromSchema(getModel(), true, true)(req, null, spy);
 
             //Mock the error.
             let err = new es.HTTPError(400, es.prefs.errMessages.extractor.paramNotFound("location.lat"));
@@ -596,7 +596,7 @@ describe("Extractor", function(){
             };
 
             //Call the function.
-            es.extractFromSchema(getModelName(), true, false)(req, null, spy);
+            es.extractFromSchema(getModel(), true, false)(req, null, spy);
 
             //Mock the error.
             let err = new es.HTTPError(400, es.prefs.errMessages.extractor.paramNotFound("location.lat"));
@@ -631,7 +631,7 @@ describe("Extractor", function(){
             };
 
             //Call the function.
-            es.extractFromSchema(getModelName(), false, true)(req, null, spy);
+            es.extractFromSchema(getModel(), false, true)(req, null, spy);
 
             //Mock the error.
             let err = new es.HTTPError(400, es.prefs.errMessages.extractor.paramNotFound("location.lng"));
@@ -667,7 +667,7 @@ describe("Extractor", function(){
             };
 
             //Call the function.
-            es.extractFromSchema(getModelName())(req, null, spy);
+            es.extractFromSchema(getModel())(req, null, spy);
 
             //Next should be called with nothing.
             expect(spy).to.have.been.calledWith();
@@ -696,12 +696,12 @@ function getSchemaFields(){
     }
 }
 
-function getModelName(){
-    return "User";
+function getModel(){
+    return mongoose.model("User");
 }
 
 function mockSchema(){
     let schema = new Schema(getSchemaFields());
 
-    mongoose.model(getModelName(), schema);
+    mongoose.model("User", schema);
 }
