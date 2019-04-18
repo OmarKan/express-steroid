@@ -15,6 +15,7 @@ An extension to ExpressJs that provides powerful features to simplify API input 
    * [Query Building](#query-building)
    * [Injection](#injection)
    * [ES preferences object](#es-preferences-object)
+   * [HTTP Error](#httperror)
 * [Tests](#tests)
 * [Motivation](#motivation)
 * [Contribution](#contribution)
@@ -137,6 +138,7 @@ router.get('/', es.extractFromSchema('employee', false, true, ['id']));
 
 ##### es.parse(parametersNames, mapper \[, sources])
 Parses parameters with given names, using given mapper function.
+If a parameter value is An Array, it applies  the mapper function to each one of the values of the array.
 
 **Note: If a field is not found, it's simply ignored**
 
@@ -486,6 +488,11 @@ Most of the following preferences are mentioned and explained previously, this s
 | queryBuilder.queriesObjName | "queries" | Name of the object in ```req``` to store queries in |
 | errMessages | N/A |Contains Default error messages for each module in ES |
 
+
+### HTTPError
+A helper function which simply creates an object containing status and message.
+
+```es.HTTPError(status, message)```
 
 ## Tests
 First, ensure that Development dependencies are installed via NPM.
