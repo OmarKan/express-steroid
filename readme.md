@@ -16,6 +16,7 @@ An extension to ExpressJs that provides powerful features to simplify API input 
    * [Injection](#injection)
    * [ES preferences object](#es-preferences-object)
    * [HTTP Error](#httperror)
+* [Example Project](#example-project)
 * [Tests](#tests)
 * [Motivation](#motivation)
 * [Contribution](#contribution)
@@ -493,6 +494,11 @@ Most of the following preferences are mentioned and explained previously, this s
 A helper function which simply creates an object containing status and message.
 
 ```es.HTTPError(status, message)```
+
+
+# Example Project
+[Here](https://github.com/OmarKan/experss-steroid-example) you can find an example project, to see Express Steroid in action.
+
 
 ## Tests
 First, ensure that Development dependencies are installed via NPM.
