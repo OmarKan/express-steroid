@@ -528,7 +528,7 @@ Your contributions are encouraged and welcomed.
 
 
 ## Todo.
-- [ ] Support for async Validators.
+- [x] ~~Support for async Validators.~~
 - [ ] Support for async Mappers.
 - [ ] Later: Enhanced syntax (More self-evident).
 - [ ] Later: Ability to develop query builders for other databases.
