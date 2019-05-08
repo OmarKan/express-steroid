@@ -109,7 +109,7 @@ The extracted fields, are found all in req\[es.prefs.dataObjectName].
 ##### es.requiredExtract(parametersNames \[, sources])
 Simply calls es.extract with ```parametersRequired``` set to true.
 
-##### es.extractFromSchema(schemaName \[, requiredAll, checkRequired, ignoredFields, sources])
+##### es.extractFromSchema(model \[, requiredAll, checkRequired, ignoredFields, sources])
 Extracts input parameters, but instead of specifying names of parameters to be extracted, you specify the model of a **registered** Mongoose Schema and it will extract all of its fields.
 
 *Side Note: Using this, along with other functions, means that if you have CRUD API, and you changed a field in the schema of the model, You won't have to modify the API or the service function.*
