@@ -110,7 +110,7 @@ The extracted fields, are found all in req\[es.prefs.dataObjectName].
 Simply calls es.extract with ```parametersRequired``` set to true.
 
 ##### es.extractFromSchema(schemaName \[, requiredAll, checkRequired, ignoredFields, sources])
-Extracts input parameters, but instead of specifying names of parameters to be extracted, you specify the name of a **registered** Mongoose Schema and it will extract all of its fields.
+Extracts input parameters, but instead of specifying names of parameters to be extracted, you specify the model of a **registered** Mongoose Schema and it will extract all of its fields.
 
 *Side Note: Using this, along with other functions, means that if you have CRUD API, and you changed a field in the schema of the model, You won't have to modify the API or the service function.*
 
@@ -118,7 +118,7 @@ Parameters:
 
 | Name | Type | Required? | Default | Description |
 | ---- | ---- | --------- | ------- | ----------- |
-| schemaName | String | Yes | N/A | Name of the schema to extract from, the schema must be already registered, the name must be matching exactly the name of the registered schema |
+| model | Mongoose Model Object | Yes | N/A | Mongoose model object of the schema to extract from, the schema must be already registered |
 | requiredAll | Boolean | No | false | If set to true, it means that all fields of the schema must be present as input  to call |
 | checkRequired | Boolean | No | false | If set to true, it means that only fields that are  marked as required in the schema are required in the call. If this field and ```requiredAll``` are both set to false, then all parameters from the schema are optional |
 | ignoredFields | Array | No | ```es.prefs.extractor.ignoredFields``` | Array of strings, containing names of fields in the Schema to be ignored and not extracted. Great to use it for ```password``` fields for example. |
@@ -127,7 +127,9 @@ Parameters:
 Extract all fields of an "Employee" schema, and only required fields in the schema are required in the call, and id is ignored.
 
 ```javascript
-router.get('/', es.extractFromSchema('employee', false, true, ['id']));
+let employee = mongoose.model("Employee", employeeSchema);
+
+router.get('/', es.extractFromSchema(employee, false, true, ['id']));
 ```
 
 ### Input Parsing.
