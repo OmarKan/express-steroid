@@ -1,8 +1,13 @@
-
-  
-# Express Steroid  
+# Express Steroid
 An extension to ExpressJs that provides powerful features to simplify API input handling, parsing, validation, code testing, and query building for MongoDB.
-  
+
+[![npm version](https://badge.fury.io/js/express-steroid.svg)](https://badge.fury.io/js/express-steroid)
+[![Build Status](https://travis-ci.org/OmarKan/express-steroid.svg?branch=master)](https://travis-ci.org/OmarKan/express-steroid)
+
+
+[![NPM](https://nodei.co/npm/express-steroid.png)](https://nodei.co/npm/express-steroid/)
+
+
 ## Table of contents  
   
 * [Introduction](#introduction)  
